@@ -1,7 +1,16 @@
+import React from "react";
+import { Routes, useNavigate, Route } from "react-router-dom";
+import Login from "./components/Login"
+import Home from "./container/Home"
+import { GoogleOAuthProvider } from "@react-oauth/google";
 export default function App() {
   return (
-    <h1 className="text-2xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
+   
+    <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="/*" element={<Home />} />
+    </Routes>
+    </GoogleOAuthProvider>
+  );
 }
