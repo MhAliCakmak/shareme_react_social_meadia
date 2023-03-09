@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ### sanity client install
-npm install @sanity/client @sanity/image-url react-google-login react-iconst react-loader-spinner react-masonry-css react-router-dom
+`npm install @sanity/client @sanity/image-url react-google-login react-iconst react-loader-spinner react-masonry-css react-router-dom uuid`
