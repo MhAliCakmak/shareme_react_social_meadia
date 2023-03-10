@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, useNavigate, Route } from "react-router-dom";
-import Login from "./components/Login"
+import {Login} from "./components"
 import Home from "./container/Home"
 import { GoogleOAuthProvider } from "@react-oauth/google";
 export default function App() {

@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate()
   const responseGoogle=(response)=>{
-    localStorage.setItem("token",JSON.stringify(response.profileObj))
+    localStorage.setItem("user",JSON.stringify(response.profileObj))
     var decodedHeader = jwt_decode(response.credential);
     console.log(decodedHeader)
      
