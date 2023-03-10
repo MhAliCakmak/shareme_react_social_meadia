@@ -4,20 +4,30 @@ import { useNavigate } from 'react-router-dom'
 import {FcGoogle} from "react-icons/fc"
 import shareVideo from "../assets/share.mp4"
 import logo from "../assets/logowhite.png"
-
+import {client} from "../client"
+import jwt_decode from "jwt-decode";
 
 
 const Login = () => {
+  const navigate = useNavigate()
   const responseGoogle=(response)=>{
     localStorage.setItem("token",JSON.stringify(response.profileObj))
-    const {name,googleId , imageUrl}= response.profileObj
-    const doc={
-      _id:googleId,
-      _type:"user",
+    var decodedHeader = jwt_decode(response.credential);
+    console.log(decodedHeader)
+     
+    const { name, sub, picture } = decodedHeader;
+    console.log(name, sub, picture)
+    const doc = {
+      _id: sub,
+      _type: 'user',
       userName: name,
-      image: imageUrl,
+      image: picture,
     }
 
+    client.createIfNotExists(doc)
+      .then(() =>{
+        navigate('/', { replace: true })
+      })
   }
 
   return (

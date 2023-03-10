@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'shareme',
 
-  projectId: 'gzxvl86h',
+  projectId: 'gmtpr205',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],

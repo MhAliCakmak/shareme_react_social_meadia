@@ -5,14 +5,14 @@ export default {
     type: 'document',
     fields: [
         {
-            name: 'name',
-            title: 'Name',
+            name: 'userName',
+            title: 'UserName',
             type: 'string'
         },
         {
             name:"image",
             title:"Image",
-            type:"image",
+            type:"string",
             
         },
     ]
