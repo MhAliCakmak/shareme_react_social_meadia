@@ -11,12 +11,10 @@ import jwt_decode from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate()
   const responseGoogle=(response)=>{
-    localStorage.setItem("user",JSON.stringify(response.profileObj))
+    localStorage.setItem("user",JSON.stringify(response))
+    console.log(response)
     var decodedHeader = jwt_decode(response.credential);
-    console.log(decodedHeader)
-     
     const { name, sub, picture } = decodedHeader;
-    console.log(name, sub, picture)
     const doc = {
       _id: sub,
       _type: 'user',
@@ -43,7 +41,7 @@ const Login = () => {
         
         <GoogleLogin 
         onSuccess={responseGoogle}
-        onFailure={(response) => console.log(response)}
+        onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
         />
 

@@ -1,4 +1,5 @@
 export const userQuery = (userId) =>{
-    const query= `*[_type == "user" && sub == "${userId}]`
+    const query= `*[_type == "user" && _id == "${userId}"]`
     return query;
 }
+
