@@ -5,14 +5,14 @@ const Spinner = ({message}) => {
   return (
     <div className='flex flex-col justify-center items-center w-full h-full'>
         <Circles
-            type="Circles"
+            type="loading"
             color="#00BFFF"
             height={50}
             width={200}
             timeout={3000} //3 secs
         />
 
-        <p class="text-lg text-center px-2">{message}</p>
+        <p className="text-lg text-center px-2">{message}</p>
     </div>
   )
 }

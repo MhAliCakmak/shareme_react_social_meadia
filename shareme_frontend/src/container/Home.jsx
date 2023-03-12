@@ -25,6 +25,7 @@ const Home = () => {
     const query = userQuery(decodedHeader?.sub);
     client.fetch(query).then((res) => {
       setUser(res[0]);
+      console.log(user?.image)
     });
     
   }, [user?._id]);

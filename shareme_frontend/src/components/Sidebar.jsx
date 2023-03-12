@@ -14,6 +14,8 @@ const categories = [
   { name: "Food" },
   { name: "Travel" },
   { name: "Sports" },
+  { name: "Nature" },
+  { name: "Coding" },
   { name: "Other" },
 ];
 
