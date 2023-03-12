@@ -12,19 +12,22 @@ import jwt_decode from "jwt-decode";
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const scrollRef = useRef(null);
+  const [user, setUser] = useState();
   const userInfo =
     localStorage.getItem("user") !== "undefined"
       ? JSON.parse(localStorage.getItem("user"))
       : localStorage.clear();
-  var decodedHeader = jwt_decode(userInfo.credential);
-  const [user, setUser] = useState(decodedHeader);
+  var decodedHeader = jwt_decode(userInfo?.credential);
+
+  
 
   useEffect(() => {
-    const query = userQuery(user?.sub);
+    const query = userQuery(decodedHeader?.sub);
     client.fetch(query).then((res) => {
-      setUser(res);
+      setUser(res[0]);
     });
-  }, [user?.sub]);
+    
+  }, [user?._id]);
 
   useEffect(() => {
     scrollRef.current.scrollTo(0, 0);
@@ -41,10 +44,9 @@ const Home = () => {
           <Link to="/">
             <img src={logo} alt="logo" className="w-28" />
           </Link>
-          <Link to={`user-profile/${user?.sub}`}>
-            <img src={user?.picture} alt="user-pic" className="w-9 h-9 rounded-full " />
+          <Link to={`user-profile/${user?._id}`}>
+            <img src={user?.image} alt="user-pic" className="w-9 h-9 rounded-full " />
           </Link>
-          <h1>{user?.name}</h1>
         </div>
         {toggleSidebar && (
         <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
